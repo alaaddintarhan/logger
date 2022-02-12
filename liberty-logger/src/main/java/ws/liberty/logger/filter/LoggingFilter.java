@@ -27,6 +27,7 @@ public class LoggingFilter extends GenericLoggingFilter<LogModel> {
     @Override
     protected Message<String> publish(LogModel log) {
         String msg = Util.jsonb.toJson(log);
+        System.out.println(">>>>>>>>>>>>> "+msg);
         return Message.of(msg);
     }
 

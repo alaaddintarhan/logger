@@ -7,8 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="liberty-logger" />
-        <module name="logger-utils" />
         <module name="demo" />
+        <module name="logger-utils" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
