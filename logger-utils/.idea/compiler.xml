@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="liberty-logger" />
+        <module name="logger-utils" />
+        <module name="demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo-service-a" target="1.8" />
+      <module name="demo-service-b" target="1.8" />
+      <module name="liberty-logger-service-a" target="1.8" />
+      <module name="liberty-logger-service-b" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

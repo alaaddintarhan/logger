@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ws.liberty.logger</groupId>
+    <artifactId>liberty-logger</artifactId>
+    <version>1.0-0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <openliberty.maven.version>3.5.1</openliberty.maven.version>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <final.name>liberty-logger</final.name>
+        <slf4j.api.version>1.7.30</slf4j.api.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>4.1</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
+        <!-- tag::reactiveMessaging[] -->
+        <dependency>
+            <groupId>org.eclipse.microprofile.reactive.messaging</groupId>
+            <artifactId>microprofile-reactive-messaging-api</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ws.logger</groupId>
+            <artifactId>logger-utils</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>liberty-logger</finalName>
+    </build>
+    <profiles>
+        <profile>
+            <id>liberty</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>2.4</version>
+                    </plugin>
+                    <!-- <plugin>
+                         <groupId>io.openliberty.tools</groupId>
+                         <artifactId>liberty-maven-plugin</artifactId>
+                         <version>${openliberty.maven.version}</version>
+                         <executions>
+                             <execution>
+                                 <id>package-server</id>
+                                 <phase>package</phase>
+                                 <goals>
+                                     <goal>package</goal>
+                                 </goals>
+                                 <configuration>
+                                     <include>minify,runnable</include>
+                                     <outputDirectory>target/wlp-package</outputDirectory>
+                                 </configuration>
+                             </execution>
+                         </executions>
+                     </plugin>-->
+                 </plugins>
+             </build>
+         </profile>
+     </profiles>
+ </project>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="${project.name}">
+
+    <featureManager>
+        <feature>microProfile-4.1</feature>
+    </featureManager>
+
+
+    <webApplication location="${project.name}.war" contextRoot="liberty-logger">
+        <classloader apiTypeVisibility="+third-party"/>
+    </webApplication>
+
+    <mpMetrics authentication="false"/>
+
+
+
+</server>

@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="liberty-logger:jar">
+    <output-path>$PROJECT_DIR$/../demo/out/artifacts/liberty_logger_jar</output-path>
+    <root id="archive" name="liberty-logger.jar">
+      <element id="module-output" name="liberty-logger" />
+      <element id="module-output" name="logger-utils" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../../maven/repository/org/json/json/20180813/json-20180813.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
