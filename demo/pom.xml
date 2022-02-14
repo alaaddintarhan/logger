@@ -7,17 +7,33 @@
     <artifactId>demo</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
+
     <properties>
-        <openliberty.maven.version>3.5.1</openliberty.maven.version>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
-        <jaeger.client.version>1.5.0</jaeger.client.version>
-        <slf4j.jdk.version>1.7.30</slf4j.jdk.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <final.name>demo</final.name>
-        <slf4j.api.version>1.7.30</slf4j.api.version>
+        <!-- Liberty configuration -->
+        <liberty.var.default.http.port>9080</liberty.var.default.http.port>
+        <liberty.var.default.https.port>9443</liberty.var.default.https.port>
     </properties>
+
     <dependencies>
+        <!-- logger dependency-->
+        <dependency>
+            <groupId>ws.liberty.logger</groupId>
+            <artifactId>liberty-logger</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- Provided dependencies -->
+        <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>8.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- tag::microprofile[] -->
         <dependency>
             <groupId>org.eclipse.microprofile</groupId>
             <artifactId>microprofile</artifactId>
@@ -25,80 +41,67 @@
             <type>pom</type>
             <scope>provided</scope>
         </dependency>
+        <!-- end::microprofile[] -->
+        <!-- For tests -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.json.bind</groupId>
+            <artifactId>javax.json.bind-api</artifactId>
+            <version>1.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Java utility classes -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
     </dependencies>
     <build>
-        <finalName>demo</finalName>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+            <!-- Plugin to run unit tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+            <!-- Enable liberty-maven plugin -->
+            <plugin>
+                <groupId>io.openliberty.tools</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>3.5.1</version>
+            </plugin>
+            <!-- Plugin to run functional tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <default.http.port>${liberty.var.default.http.port}</default.http.port>
+                        <default.https.port>${liberty.var.default.https.port}</default.https.port>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
-    <profiles>
-        <profile>
-            <id>liberty</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-war-plugin</artifactId>
-                        <version>3.3.2</version>
-                        <configuration>
-                            <failOnMissingWebXml>false</failOnMissingWebXml>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>io.openliberty.tools</groupId>
-                        <artifactId>liberty-maven-plugin</artifactId>
-                        <version>${openliberty.maven.version}</version>
-                        <executions>
-                            <execution>
-                                <id>package-server</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>create</goal>
-                                    <goal>install-feature</goal>
-                                    <goal>deploy</goal>
-                                    <goal>package</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>target/wlp-package</outputDirectory>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <include>runnable</include>
-                            <serverName>${final.name}</serverName>
-                            <bootstrapProperties>
-                                <project.name>${final.name}</project.name>
-                               <!-- <jwt.issuer>https://server.example.com</jwt.issuer>-->
-                                <app.context.root>/</app.context.root>
-                            </bootstrapProperties>
-                            <libertyDebugPort>55779</libertyDebugPort>
-                            <libertyDebug></libertyDebug>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-            <dependencies>
-                <dependency>
-                    <groupId>ws.liberty.logger</groupId>
-                    <artifactId>liberty-logger</artifactId>
-                    <version>1.0-0-SNAPSHOT</version>
-                </dependency>
-                <dependency>
-                    <groupId>io.jaegertracing</groupId>
-                    <artifactId>jaeger-client</artifactId>
-                    <version>${jaeger.client.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                    <version>${slf4j.api.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-jdk14</artifactId>
-                    <version>${slf4j.jdk.version}</version>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
 </project>

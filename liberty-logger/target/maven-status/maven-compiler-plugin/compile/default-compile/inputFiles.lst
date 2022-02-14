@@ -1,4 +1,7 @@
 C:\dev\git-repo\logger\liberty-logger\src\main\java\ws\liberty\logger\model\LogModel.java
+C:\dev\git-repo\logger\liberty-logger\src\main\java\ws\liberty\logger\MessageProducer.java
 C:\dev\git-repo\logger\liberty-logger\src\main\java\ws\liberty\logger\filter\LoggingFilter.java
-C:\dev\git-repo\logger\liberty-logger\src\main\java\ws\liberty\logger\HelloController.java
+C:\dev\git-repo\logger\liberty-logger\src\main\java\ws\liberty\logger\health\SystemReadinessCheck.java
+C:\dev\git-repo\logger\liberty-logger\src\main\java\ws\liberty\logger\MessageConsumer.java
+C:\dev\git-repo\logger\liberty-logger\src\main\java\ws\liberty\logger\health\SystemLivenessCheck.java
 C:\dev\git-repo\logger\liberty-logger\src\main\java\ws\liberty\logger\Util.java

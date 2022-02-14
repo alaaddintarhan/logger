@@ -18,11 +18,10 @@ public class ServiceController {
     @ConfigProperty(name = "liberty.app-name")
     private String appName;
 
-
-
     @GET
     @Path("/{parameter}")
     public String doSomething(@PathParam("parameter") String parameter) {
+
         return String.format("Processed parameter value '%s', '%s' , - AppName :  %s", parameter,injectedValue,appName);
     }
 }

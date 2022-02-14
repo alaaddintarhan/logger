@@ -1,4 +1,7 @@
+ws\liberty\logger\MessageConsumer.class
+ws\liberty\logger\health\SystemLivenessCheck.class
+ws\liberty\logger\MessageProducer.class
 ws\liberty\logger\model\LogModel.class
-ws\liberty\logger\HelloController.class
 ws\liberty\logger\Util.class
 ws\liberty\logger\filter\LoggingFilter.class
+ws\liberty\logger\health\SystemReadinessCheck.class

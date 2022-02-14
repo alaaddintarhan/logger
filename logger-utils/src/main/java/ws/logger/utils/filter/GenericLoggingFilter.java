@@ -23,7 +23,6 @@ public abstract class GenericLoggingFilter<T extends BaseLog> implements Filter 
 
     abstract protected String getAppName();
 
-    @Outgoing("systemLoad")
     protected abstract Message<String> publish(T t);
 
     protected abstract T  customize(LoggerServletRequestWrapper reqWrapper) ;

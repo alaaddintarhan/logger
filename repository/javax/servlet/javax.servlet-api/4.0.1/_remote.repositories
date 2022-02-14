@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Feb 14 14:35:15 EET 2022
+javax.servlet-api-4.0.1.jar>central=
+javax.servlet-api-4.0.1.pom>central=

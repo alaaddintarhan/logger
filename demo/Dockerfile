@@ -4,6 +4,7 @@ ARG VERSION=1.0
 ARG REVISION=SNAPSHOT
 
 LABEL \
+  org.opencontainers.image.name=demo \
   org.opencontainers.image.authors="AlaaddinTarhan" \
   org.opencontainers.image.vendor="demo" \
   org.opencontainers.image.url="local" \
@@ -11,15 +12,15 @@ LABEL \
   org.opencontainers.image.version="$VERSION" \
   org.opencontainers.image.revision="$REVISION" \
   vendor="Open Liberty" \
-  name="demo \
+  name="demo" \
   version="$VERSION-$REVISION" \
   summary="The system microservice from the MicroProfile Reactive Messaging guide" \
   description="This image contains the system microservice running with the Open Liberty runtime."
 
 COPY --chown=1001:0 src/main/liberty/config /config/
-COPY --chown=1001:0 target/system.war /config/apps
+COPY --chown=1001:0 target/demo.war /config/apps
 
-EXPOSE 9083 9446
+EXPOSE 9090 9091
 
 # It is recommended to run the configure.sh when build image for production.
 # RUN configure.sh
