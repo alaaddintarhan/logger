@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/../../demo/demo45/service-a" />
     <file type="web" url="file://$PROJECT_DIR$" />
+    <file type="web" url="file://$PROJECT_DIR$/../../microprofile-projects/guide-microprofile-reactive-messaging/finish/inventory" />
+    <file type="web" url="file://$PROJECT_DIR$/../../microprofile-projects/guide-microprofile-reactive-messaging/finish/system" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -10,6 +13,8 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/../liberty-logger/pom.xml" />
         <option value="$PROJECT_DIR$/../logger-utils/pom.xml" />
+        <option value="$PROJECT_DIR$/../../microprofile-projects/guide-microprofile-reactive-messaging/finish/pom.xml" />
+        <option value="$PROJECT_DIR$/../../demo/demo45/service-a/pom.xml" />
       </list>
     </option>
   </component>

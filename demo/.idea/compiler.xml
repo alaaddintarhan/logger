@@ -6,9 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="demo" />
+        <module name="models" />
+        <module name="system" />
         <module name="liberty-logger" />
         <module name="logger-utils" />
+        <module name="inventory" />
+        <module name="demo" />
+        <module name="demo45-service-a" />
       </profile>
     </annotationProcessing>
   </component>
